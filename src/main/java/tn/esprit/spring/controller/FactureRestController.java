@@ -15,10 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import tn.esprit.spring.entity.CategorieClient;
-import tn.esprit.spring.entity.Facture;
-import tn.esprit.spring.service.IFactureService;
+import tn.esprit.spring.entity.*;
+import tn.esprit.spring.service.*;
 
 @RestController
 @RequestMapping("/factures")

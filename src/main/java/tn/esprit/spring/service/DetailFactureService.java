@@ -5,13 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import tn.esprit.spring.entity.DetailFacture;
-import tn.esprit.spring.entity.Facture;
-import tn.esprit.spring.entity.Produit;
-import tn.esprit.spring.repository.DetailFactureRepository;
-import tn.esprit.spring.repository.FactureRepository;
-import tn.esprit.spring.repository.ProduitRepository;
+import tn.esprit.spring.entity.*;
+import tn.esprit.spring.repository.*;
 
 @Service
 public class DetailFactureService implements IDetailFactureService{

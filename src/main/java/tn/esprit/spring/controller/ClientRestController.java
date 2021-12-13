@@ -2,6 +2,8 @@ package tn.esprit.spring.controller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,6 +19,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import tn.esprit.spring.entity.CategorieClient;
 import tn.esprit.spring.entity.Client;
+import tn.esprit.spring.entity.Role;
+import tn.esprit.spring.entity.RoleName;
 import tn.esprit.spring.service.IClientService;
 
 @Api(tags = "Gestion des client")
@@ -27,7 +31,7 @@ public class ClientRestController {
 	@Autowired
 	IClientService clientService ;
 	
-	@GetMapping("/get-all")
+	@GetMapping("/getAll")
 	@ApiOperation(value = "Récupérer la liste des clients")
 	@ResponseBody
 	public List<Client>getClients(){
@@ -44,7 +48,13 @@ public class ClientRestController {
 	@PostMapping("/add")
 	@ResponseBody
 	public Client addClient(@RequestBody Client c)
-	{
+	{	
+		
+		System.out.println("++++++++++++");
+
+		System.out.println(c.getRoles());
+		System.out.println("++++++++++");
+
 	Client client = clientService.addClient(c);
 	return client;
 	}
@@ -87,5 +97,7 @@ public class ClientRestController {
 	{
 		return clientService.getChiffreAffaireParCategorieClient(categorieClient, d1, d2) ;
 	}
+	
+
 	
 }

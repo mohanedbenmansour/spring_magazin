@@ -17,12 +17,13 @@ public interface IClientService {
 	Client updateClient(Client c);
 
 	Client retrieveClient(Long id);
+	Client findUserByUserName(String username);
 	
 	List<Client> getClientsBetweenTwoDates (Date date1 , Date date2);
 	
 	List<Client> findClientsByCategorie(CategorieClient categorieClient);
 
-	Client findUserByUserName(String nom);
+	Client findUserByNom(String nom);
 	float getChiffreAffaireParCategorieClient(CategorieClient categorieClient, Date startDate, Date endDate);
 	
 }

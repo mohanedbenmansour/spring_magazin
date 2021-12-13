@@ -18,7 +18,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import  tn.esprit.spring.entity.Role;
 import lombok.*;
+
 
 @Entity
 @Getter
@@ -40,6 +42,8 @@ private String prenom;
 private String email;
 private String password;
 private Boolean active;
+
+private String userName;
 @Temporal(TemporalType.DATE)
 private Date dateNaissance;
 @Enumerated(EnumType.STRING)
@@ -51,5 +55,6 @@ private CategorieClient categorieClient;
 private Set<Facture> factures;
 @ManyToMany(cascade = CascadeType.PERSIST, fetch= FetchType.EAGER)
 private Set<Role> roles;
+
 }
 

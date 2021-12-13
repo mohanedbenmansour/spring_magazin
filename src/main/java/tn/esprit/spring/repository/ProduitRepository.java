@@ -17,8 +17,7 @@ import tn.esprit.spring.entity.Produit;
 public interface ProduitRepository extends JpaRepository<Produit, Long> {
 	
 	List<Produit> findByLibelle(String libelle);
-	
-	
+
 	@Query("select p from Produit p where p.detailProduit.categorieProduit = :catP ")
 	List<Produit> getByCategorie (@Param("catP")CategorieProduit categorieProduit);
 	

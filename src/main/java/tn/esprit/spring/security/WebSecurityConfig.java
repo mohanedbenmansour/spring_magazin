@@ -24,10 +24,12 @@ BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);}
 @Override
 protected void configure(HttpSecurity http) throws Exception {
-http.authorizeRequests() .antMatchers("/add").permitAll()
-.antMatchers("products/add/{idRayon}/{idStock}").access("hasRole('SUPERADMIN')")
+http.authorizeRequests() .antMatchers("/clients/add").permitAll()
+.antMatchers("/products/add/{idRayon}/{idStock}").access("hasRole('SUPERADMIN')")
 .antMatchers("/get**}").access("hasRole('ADMIN')")
-.antMatchers("clients/get-all").access("hasRole('ADMIN')")
+.antMatchers("clients/getAll").access("hasRole('ADMIN')")
+.antMatchers("/registration").permitAll()
+
 .anyRequest()
 .authenticated()
 .and()

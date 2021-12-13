@@ -4,17 +4,11 @@ import java.util.Date;
 
 import java.util.List;
 import java.util.Set;
-
 import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-
-import tn.esprit.spring.entity.CategorieClient;
-import tn.esprit.spring.entity.DetailFacture;
-import tn.esprit.spring.entity.Facture;
-import tn.esprit.spring.entity.Produit;
+import tn.esprit.spring.entity.*;
 import tn.esprit.spring.repository.*;
 @Service
 public class FactureService implements IFactureService{
@@ -31,7 +25,7 @@ public class FactureService implements IFactureService{
 	@Autowired
 	private ProduitRepository produitRepository ;
 	
-
+	
 	@Override
 	public List<Facture> retrieveAllFactures() {
 		return factureRepository.findAll();
@@ -99,6 +93,7 @@ public class FactureService implements IFactureService{
 	 * 
 	 */
 
+	@Override 
 	@Transactional
 	public Facture addFacture(Facture facture, Long idClient) {
 		
@@ -143,17 +138,24 @@ public class FactureService implements IFactureService{
 		
 		facture.setDateFacture(facture.getDateFacture());
 		
+		Long jeton = factureRepository.findLastFacture();
+		
+		facture.setJeton(jeton+1);
 		
 		factureRepository.save(facture);
 		
 		for (DetailFacture detailFacture : detailFactures) {
-			detailFacture.setFacture(facture);
+			
+			Facture facture1 = factureRepository.findByJeton(jeton+1);
+			detailFacture.setFacture(facture1);
+		
 			detailFactureRepository.save(detailFacture);
 		}
 		
 		
 		return facture;
 	}
+	
 
 	@Override
 	public float getChiffreDaffairesParCategorie(CategorieClient categorieClient, Date d1, Date d2) {
@@ -169,7 +171,14 @@ public class FactureService implements IFactureService{
 	
 	
 	
-	
+	@Override
+	public void enableFacture(Long id) {
+	 Facture facture = factureRepository.getById(id);
+	 facture.setActive(true);
+	 factureRepository.save(facture);
+	 
+		
+	}
 	
 	
 	

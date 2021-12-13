@@ -2,6 +2,7 @@ package tn.esprit.spring.entity;
 
 import java.io.Serializable;
 
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -13,19 +14,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity @Getter @Setter
+@Entity 
+@Getter 
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Role implements Serializable {
-@Id
-@GeneratedValue(strategy =
-GenerationType.AUTO)
-private int id;
-@Enumerated(EnumType.STRING)
-private String role;
+	@Id
 
-public String getRole(){
-	return this.role;
-}
+	@GeneratedValue(strategy =
+	GenerationType.AUTO)
+	private int id;
+	@Enumerated(EnumType.STRING)
+	private RoleName role;
 
 }

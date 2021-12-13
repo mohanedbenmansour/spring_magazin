@@ -1,17 +1,16 @@
 package tn.esprit.spring.service;
 
 import java.util.Date;
-
 import java.util.List;
-
-import tn.esprit.spring.entity.CategorieClient;
-import tn.esprit.spring.entity.Facture;
+import tn.esprit.spring.entity.*;
 
 public interface IFactureService {
 
 	public List<Facture> retrieveAllFactures();
 	
 	public void cancelFacture(Long id);
+	
+	public void enableFacture(Long id);
 	
 	public Facture retrieveFacture(Long id);
 	

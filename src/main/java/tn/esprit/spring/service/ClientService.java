@@ -63,8 +63,12 @@ public class ClientService implements IClientService{
 	}
 	
 	@Override
-	public Client findUserByUserName(String nom){
-		return clientRepository.findByUserName(nom);
+	public Client findUserByNom(String nom){
+		return clientRepository.findByNom(nom);
+	}
+	@Override
+	public Client findUserByUserName(String username){
+		return clientRepository.findByUserName(username);
 	}
 	
 	/*
